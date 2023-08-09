@@ -1,4 +1,5 @@
 import * as R from "ramda";
+import { Weather } from "./service";
 
 export const isFunction = R.is(Function);
 export const calcIsValidZip = R.both(
@@ -19,3 +20,10 @@ export const calcMinMax = (list: number[]) => {
     list
   );
 };
+export const convertToCelcius = (list: Weather[]) => {
+  const converted = R.map(({ temperature, ...rest }) => ({ temperature: R.pipe(fToC, roundNumber)(temperature), ...rest }), list);
+  return converted;
+};
+
+const fToC = (val: number) => ((val - 32) * 5) / 9;
+const roundNumber = (num: number) => Math.round(num * 10) / 10; // Round to tenths

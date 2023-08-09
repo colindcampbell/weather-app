@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Weather, getWeather } from "../service";
-import { calcIsValidZip, convertToCelcius, updateQueryString } from "../utils";
+import { calcIsValidZip, convertToCelsius, updateQueryString } from "../utils";
 import { TEMPERATURE_UNITS } from "../constants";
 import * as R from "ramda";
 
@@ -23,7 +23,7 @@ const calcWeatherData = (unit: TEMPERATURE_UNITS) => (response) => {
   if (R.equals(unit, TEMPERATURE_UNITS.F)) {
     return response;
   }
-  return convertToCelcius(response);
+  return convertToCelsius(response);
 };
 
 export interface WeatherFetchError {

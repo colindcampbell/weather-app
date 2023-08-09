@@ -112,7 +112,7 @@ const TemperatureUnitControl = () => {
         <FormControlLabel
           value={TEMPERATURE_UNITS.C}
           control={<Radio />}
-          label="°C (Celcius)"
+          label="°C (Celsius)"
           checked={R.equals(unit, TEMPERATURE_UNITS.C)}
           onChange={makeHandleChange(TEMPERATURE_UNITS.C)}
         />

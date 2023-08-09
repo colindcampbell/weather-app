@@ -61,7 +61,7 @@ npm test
   - The zip code is added to the query string in the url for sharing
   - The zip code is added to the user's recent searches and persisted to local storage
 - The top left of the nav bar has a menu button that expands the side panel. In the side panel, the user can:
-  - Choose between Celcius or Fahrenheit temperature units. This selection is persisted to local storage and populates on page load
+  - Choose between Celsius or Fahrenheit temperature units. This selection is persisted to local storage and populates on page load
   - See a list of their 10 most recent valid searches. Clicking on any value in the list will select that zip code for display in the main interface
   - Once a zip code has loaded, the response is cached for instant rendering when switching between cached values
 

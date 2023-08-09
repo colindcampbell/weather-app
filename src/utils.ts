@@ -24,7 +24,7 @@ export const calcMinMax = (list: number[]) => {
     list
   );
 };
-export const convertToCelcius = (list: Weather[]) => {
+export const convertToCelsius = (list: Weather[]) => {
   const converted = R.map(({ temperature, ...rest }) => ({ temperature: R.pipe(fToC, roundNumber)(temperature), ...rest }), list);
   return converted;
 };

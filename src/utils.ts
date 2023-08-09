@@ -9,6 +9,9 @@ export const calcIsValidZip = R.both(
 );
 export const mapIndexed = R.addIndex(R.map);
 export const reduceIndexed = R.addIndex(R.reduce);
+const isNotNil = R.complement(R.isNil);
+export const isNotEmpty = R.complement(R.isEmpty);
+export const existsAndIsNotEmpty = R.allPass([isNotNil, isNotEmpty]);
 export const calcValuePercentage = ({ min, max, value }: { min: number; max: number; value: number }): number => {
   const rangeTotal = max - min;
   const rangeValue = value - min;

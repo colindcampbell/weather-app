@@ -6,13 +6,15 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
+import ClearIcon from "@mui/icons-material/Refresh";
 import SearchIcon from "@mui/icons-material/Search";
 import "../styles/App.css";
 import { useCurrentZipcode, useWeatherStoreActions } from "../hooks/useWeatherStore";
-import { ChangeEvent, useCallback } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { drawerWidth } from "../constants";
 import { Drawer } from "./Drawer";
 import * as R from "ramda";
+import { calcIsValidZip, existsAndIsNotEmpty } from "../utils";
 
 export const AppNavBar = ({ open, setOpen }) => {
   const handleDrawerOpen = () => {
@@ -104,19 +106,41 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const SearchInput = () => {
   const current = useCurrentZipcode();
+  const [zip, setZip] = useState<string>(current);
   const actions = useWeatherStoreActions();
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      actions.set({ current: R.trim(e.target.value) });
+      const value = R.trim(e.target.value);
+      setZip(value);
+      if (calcIsValidZip(value)) {
+        actions.set({ current: value });
+      }
     },
     [actions]
   );
+  const handleReset = useCallback(() => {
+    setZip("");
+    actions.set({ current: "" });
+  }, [actions]);
+
+  useEffect(() => {
+    setZip(current);
+  }, [current]);
+
+  const showReset = existsAndIsNotEmpty(current);
   return (
-    <Search>
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-      <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} value={current} onChange={handleChange} type="search" />
-    </Search>
+    <>
+      <Search>
+        <SearchIconWrapper>
+          <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} value={zip} onChange={handleChange} type="search" autoFocus />
+      </Search>
+      {showReset && (
+        <IconButton title="Reset" size="large" color="inherit" aria-label="Reset" onClick={handleReset} sx={{ ml: 1 }}>
+          <ClearIcon />
+        </IconButton>
+      )}
+    </>
   );
 };

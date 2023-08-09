@@ -151,6 +151,12 @@ button:focus-visible {
 .ovf-a {
   overflow: auto;
 }
+.ovfx-a {
+  overflow-x: auto;
+}
+.ovfy-a {
+  overflow-y: hidden;
+}
 .ovf-h {
   overflow: hidden;
 }

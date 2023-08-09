@@ -2,9 +2,8 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import "../styles/App.css";
 import { useCurrentTemperatureUnit, useCurrentZipcode, useSavedSearches, useWeatherStoreActions } from "../hooks/useWeatherStore";
-import { useCallback } from "react";
+import { FC, useCallback } from "react";
 import MuiDrawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -20,7 +19,12 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { updateQueryString } from "../utils";
 
-export const Drawer = ({ setOpen, open }) => {
+interface DrawerProps {
+  open: boolean;
+  setOpen: (val: boolean) => void;
+}
+
+export const Drawer: FC<DrawerProps> = ({ setOpen, open }) => {
   const currentZip = useCurrentZipcode();
   const savedSearches = useSavedSearches();
   const actions = useWeatherStoreActions();
@@ -97,7 +101,7 @@ const TemperatureUnitControl = () => {
   return (
     <FormControl>
       <FormLabel id="temperature-unit">Temperature Unit</FormLabel>
-      <RadioGroup aria-labelledby="temperature-unit" defaultValue={TEMPERATURE_UNITS.F} name="radio-buttons-group">
+      <RadioGroup aria-labelledby="temperature-unit" defaultValue={TEMPERATURE_UNITS.F} name="unit-radio-buttons-group">
         <FormControlLabel
           value={TEMPERATURE_UNITS.F}
           control={<Radio />}

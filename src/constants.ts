@@ -9,3 +9,7 @@ export enum TEMPERATURE_UNITS {
   F = "F",
   C = "C",
 }
+
+export enum FETCH_STATUS {
+  IDLE = "idle",
+}

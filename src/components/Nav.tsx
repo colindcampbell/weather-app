@@ -20,7 +20,7 @@ export const AppNavBar = ({ open, setOpen }) => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }} component="nav">
+    <Box component="nav">
       <AppBar position="fixed" open={open}>
         <Toolbar sx={{ backgroundColor: "#0072e4" }}>
           {!open && (

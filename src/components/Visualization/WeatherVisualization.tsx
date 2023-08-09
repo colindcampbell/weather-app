@@ -5,12 +5,12 @@ import { Weather } from "../../service";
 import { GeneratePoints, calcVisualizationPoints } from "./visualizationUtils";
 import { visualizationHeight } from "../../constants";
 
-interface WeatherVisualization {
+interface WeatherVisualizationProps {
   forecastWeatherItems: Weather[];
   forecastWeatherItemWidths: number[];
 }
 
-export const WeatherVisualization: FC<WeatherVisualization> = ({ forecastWeatherItems, forecastWeatherItemWidths }) => {
+export const WeatherVisualization: FC<WeatherVisualizationProps> = ({ forecastWeatherItems, forecastWeatherItemWidths }) => {
   const width = R.sum(forecastWeatherItemWidths);
   const points = useMemo(() => {
     if (R.isEmpty(forecastWeatherItemWidths)) {

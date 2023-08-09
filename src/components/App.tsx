@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function App() {
   const [open, setOpen] = useState(false);
   return (
-    <Box className="App">
+    <Box className="app">
       <CssBaseline />
       <AppNavBar open={open} setOpen={setOpen} />
       <AppContent open={open} />

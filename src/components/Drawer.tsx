@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import "../styles/App.css";
-import { useCurrentTemperatureUnit, useWeatherStoreActions } from "../hooks/useWeatherStore";
+import { useCurrentTemperatureUnit, useCurrentZipcode, useSavedSearches, useWeatherStoreActions } from "../hooks/useWeatherStore";
 import { useCallback } from "react";
 import MuiDrawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
@@ -15,11 +15,25 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { TEMPERATURE_UNITS, drawerWidth } from "../constants";
 import * as R from "ramda";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import { updateQueryString } from "../utils";
 
 export const Drawer = ({ setOpen, open }) => {
+  const currentZip = useCurrentZipcode();
+  const savedSearches = useSavedSearches();
+  const actions = useWeatherStoreActions();
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const handleClickSavedSearch = useCallback(
+    (zip: string) => {
+      actions.set({ current: zip });
+      updateQueryString({ zip });
+    },
+    [actions]
+  );
   return (
     <MuiDrawer
       sx={{
@@ -39,10 +53,24 @@ export const Drawer = ({ setOpen, open }) => {
           <ChevronLeftIcon />
         </IconButton>
       </DrawerHeader>
-      <Box sx={{ padding: 1 }}>
-        <TemperatureUnitControl />
-        <Divider />
-        <Typography variant="h6">Recent Searches</Typography>
+      <Box>
+        <Box sx={{ padding: 1 }}>
+          <TemperatureUnitControl />
+        </Box>
+        <Divider sx={{ marginTop: 1, marginBottom: 1 }} />
+        <Typography variant="h6" sx={{ padding: 1 }}>
+          Recent Searches
+        </Typography>
+        <List aria-label="main mailbox folders">
+          {R.map(
+            (zip) => (
+              <ListItemButton key={zip} onClick={() => handleClickSavedSearch(zip)} selected={R.equals(zip, currentZip)}>
+                <ListItemText>{zip}</ListItemText>
+              </ListItemButton>
+            ),
+            savedSearches
+          )}
+        </List>
       </Box>
     </MuiDrawer>
   );

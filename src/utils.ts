@@ -1,5 +1,6 @@
 import * as R from "ramda";
 import { Weather } from "./service";
+import queryString from "query-string";
 
 export const isFunction = R.is(Function);
 export const calcIsValidZip = R.both(
@@ -27,3 +28,6 @@ export const convertToCelcius = (list: Weather[]) => {
 
 const fToC = (val: number) => ((val - 32) * 5) / 9;
 const roundNumber = (num: number) => Math.round(num * 10) / 10; // Round to tenths
+
+export const getQueryString = () => queryString.parse(window.location.search);
+export const updateQueryString = (params) => window.history.replaceState(null, null, `?${queryString.stringify(params)}`);

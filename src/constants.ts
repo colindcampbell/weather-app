@@ -3,7 +3,7 @@ export const modelTypes = {
 };
 
 export const visualizationHeight = 240;
-export const drawerWidth = 240;
+export const drawerWidth = 200;
 
 export enum TEMPERATURE_UNITS {
   F = "F",

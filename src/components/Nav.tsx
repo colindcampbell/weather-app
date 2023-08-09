@@ -12,6 +12,7 @@ import { useCurrentZipcode, useWeatherStoreActions } from "../hooks/useWeatherSt
 import { ChangeEvent, useCallback } from "react";
 import { drawerWidth } from "../constants";
 import { Drawer } from "./Drawer";
+import * as R from "ramda";
 
 export const AppNavBar = ({ open, setOpen }) => {
   const handleDrawerOpen = () => {
@@ -106,7 +107,7 @@ const SearchInput = () => {
   const actions = useWeatherStoreActions();
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      actions.set({ current: e.target.value });
+      actions.set({ current: R.trim(e.target.value) });
     },
     [actions]
   );
@@ -115,7 +116,7 @@ const SearchInput = () => {
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
-      <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} value={current} onChange={handleChange} />
+      <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} value={current} onChange={handleChange} type="search" />
     </Search>
   );
 };

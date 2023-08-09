@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 import "../styles/App.css";
-import { useCurrentTemperatureUnit, useCurrentZipcode, useWeatherStore } from "../hooks/useWeatherStore";
+import { useCurrentTemperatureUnit, useCurrentZipcode, useWeatherStore, useWeatherStoreActions } from "../hooks/useWeatherStore";
 import { useCallback, useEffect, useState } from "react";
 import * as R from "ramda";
 import { Weather } from "../service";
@@ -18,8 +18,9 @@ import { drawerWidth } from "../constants";
 export const AppContent = ({ open }) => {
   const zip = useCurrentZipcode();
   const unit = useCurrentTemperatureUnit();
+  const actions = useWeatherStoreActions();
   const isValidZip = calcIsValidZip(zip);
-  const { error, data = [], isLoading, fetchStatus } = useWeatherData(zip, unit);
+  const { error, data = [], isLoading, fetchStatus } = useWeatherData(zip, unit, actions.set);
 
   return (
     <Main open={open} className="d-f fd-c h-100">

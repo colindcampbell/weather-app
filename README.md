@@ -35,6 +35,7 @@ npm test
 - State management and local storage persistance: [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)
 - Data visualization: [D3](https://d3js.org/)
 - Functional programming utilities: [Ramda](https://ramdajs.com/)
+- Testing: [Vitest](https://vitest.dev/) and [Testing Library](https://testing-library.com/)
 
 ## App Features and Interactions
 

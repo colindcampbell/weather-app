@@ -24,13 +24,13 @@ export const AppNavBar = ({ open, setOpen }) => {
   return (
     <Box component="nav">
       <AppBar position="fixed" open={open}>
-        <Toolbar sx={{ backgroundColor: "#0072e4" }}>
+        <Toolbar className="bg">
           {!open && (
             <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} sx={{ mr: 2 }}>
               <MenuIcon />
             </IconButton>
           )}
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
+          <Typography variant="h6" noWrap component="div" sx={{ display: { xs: "none", sm: "block" } }} className="f-1">
             Weather
           </Typography>
           <SearchInput />

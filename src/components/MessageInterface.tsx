@@ -8,7 +8,7 @@ import { FetchStatus } from "@tanstack/react-query";
 import { FETCH_STATUS } from "../constants";
 
 interface MessageInterfaceProps {
-  error: WeatherFetchError;
+  error?: WeatherFetchError;
   isLoading: boolean;
   fetchStatus: FetchStatus;
 }
@@ -19,9 +19,9 @@ export const MessageInterface: FC<MessageInterfaceProps> = ({ error, isLoading, 
   return (
     <Box className="d-f h-100 w-100 ai-c jc-c">
       {showLoading ? (
-        <CircularProgress sx={{ color: "white" }} />
+        <CircularProgress className="c-w" />
       ) : (
-        <Typography variant="h4" sx={{ color: "white" }} className="ta-c">
+        <Typography variant="h4" className="ta-c c-w">
           {hasError ? error?.response?.statusText : "Welcome, please enter a valid 5 digit zip code above"}
         </Typography>
       )}

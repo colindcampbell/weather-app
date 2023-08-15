@@ -19,8 +19,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["node", "jest"]
+    "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "include": ["src", "__tests__/utils.test.ts"],
+  "include": ["src", "__tests__/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

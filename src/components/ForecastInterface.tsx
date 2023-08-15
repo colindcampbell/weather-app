@@ -23,10 +23,10 @@ export const ForecastInterface: FC<ForecastInterfaceProps> = ({ data }) => {
   }, []);
 
   return (
-    <Box className="d-f fd-c h-100 jc-c" sx={{ paddingTop: 4, gap: 8 }}>
+    <Box className="d-f fd-c h-100 jc-c" sx={{ pt: 4, gap: 8 }}>
       {currentWeather && <CurrentWeather {...currentWeather} />}
-      <Box className="ovfx-a ovfy-a w-100 f-1">
-        <Box className="d-f pos-r" sx={{ marginTop: "240px" }}>
+      <Box className="ovfx-a ovfy-a w-100 f-1 d-f">
+        <Box className="d-f pos-r" sx={{ mt: "240px" }}>
           <WeatherVisualization forecastWeatherItemWidths={forecastWeatherItemWidths} forecastWeatherItems={forecastWeatherItems} />
           {mapIndexed(
             (weatherItem: Weather, index: number) => (
@@ -44,7 +44,7 @@ const CurrentWeather: FC<Weather> = ({ icon, startTime, shortForecast, temperatu
   const { unit } = useWeatherStore();
   return (
     <Box className="d-f jc-sa">
-      <Box className="d-f fd-c ai-c" sx={{ color: "white" }}>
+      <Box className="d-f fd-c ai-c c-w">
         <Typography variant="body2">{dayjs(startTime).format("MMM. D, YYYY, h a")}</Typography>
         <Box className="d-f g-8">
           <Typography variant="h1">{temperature}&#176;</Typography>
@@ -60,7 +60,7 @@ const CurrentWeather: FC<Weather> = ({ icon, startTime, shortForecast, temperatu
         </Typography>
       </Box>
       <Box className="d-f fd-c ai-c jc-c">
-        <img src={R.replace("size=small", "size=large", icon)} alt={shortForecast} style={{ borderRadius: 8, width: 160, height: "auto" }} />
+        <img src={R.replace("size=small", "size=large", icon)} alt={shortForecast} className="weather-current" />
       </Box>
     </Box>
   );
@@ -76,15 +76,10 @@ const WeatherItem: FC<WeatherItemProps> = ({ startTime, icon, shortForecast, tem
     }
   }, [index, setItemWidth, width]);
   return (
-    <Box className="reverse-bg d-f" ref={ref} sx={{ paddingBottom: "60px" }}>
-      <Box className="d-f fd-c ai-c ta-c ofv-h py-8" sx={{ transform: "translateY(-60px)", paddingBottom: "60px", color: "white" }}>
+    <Box className="reverse-bg d-f" ref={ref}>
+      <Box className="d-f fd-c ai-c ta-c ofv-h py-8 c-w" sx={{ transform: "translateY(-60px)" }}>
         <Typography variant="h4">{temperature}</Typography>
-        <img
-          src={icon}
-          alt={shortForecast}
-          className="w-100"
-          style={{ height: "auto", maxWidth: 60, minWidth: 32, borderRadius: 4, border: "2px solid white" }}
-        />
+        <img src={icon} alt={shortForecast} className="w-100 weather-forecast" />
         <Typography variant="body1" noWrap>
           {dayjs(startTime).format("h a")}
         </Typography>

@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { expect, test, describe } from "vitest";
 import { MessageInterface } from "../src/components/MessageInterface";
 import { ForecastInterface } from "../src/components/ForecastInterface";
+import userEvent from "@testing-library/user-event";
 import { Drawer } from "../src/components/Drawer";
 
 describe("MessageInterface", () => {
@@ -52,13 +53,21 @@ describe("ForecastInterface", () => {
 });
 
 describe("Drawer", () => {
-  test("renders temperature unit input", () => {
+  test("renders temperature unit input", async () => {
     const state = {
       open: true,
     };
     render(<Drawer open={state.open} setOpen={() => (state.open = !state.open)} />);
-
     expect(screen.getByLabelText("Temperature Unit")).toBeInTheDocument();
-    // TODO: test clicking the checked radio button
+  });
+  test("temperature unit input updates on click", async () => {
+    const state = {
+      open: true,
+    };
+    render(<Drawer open={state.open} setOpen={() => (state.open = !state.open)} />);
+    const input = screen.getByRole("radio", { name: "°C (Celsius)" });
+    expect(input).toHaveAttribute("value", "false");
+    await userEvent.click(input);
+    expect(input).toHaveAttribute("value", "true");
   });
 });

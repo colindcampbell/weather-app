@@ -101,17 +101,17 @@ const TemperatureUnitControl = () => {
   return (
     <FormControl>
       <FormLabel id="temperature-unit">Temperature Unit</FormLabel>
-      <RadioGroup aria-labelledby="temperature-unit" defaultValue={TEMPERATURE_UNITS.F} name="unit-radio-buttons-group">
+      <RadioGroup aria-labelledby="temperature-unit" defaultValue={TEMPERATURE_UNITS.F} value={unit} name="unit-radio-buttons-group">
         <FormControlLabel
           value={TEMPERATURE_UNITS.F}
-          control={<Radio />}
+          control={<Radio value={unit === TEMPERATURE_UNITS.F} />}
           label="°F (Fahrenheit)"
           checked={R.equals(unit, TEMPERATURE_UNITS.F)}
           onChange={makeHandleChange(TEMPERATURE_UNITS.F)}
         />
         <FormControlLabel
           value={TEMPERATURE_UNITS.C}
-          control={<Radio />}
+          control={<Radio value={unit === TEMPERATURE_UNITS.C} />}
           label="°C (Celsius)"
           checked={R.equals(unit, TEMPERATURE_UNITS.C)}
           onChange={makeHandleChange(TEMPERATURE_UNITS.C)}

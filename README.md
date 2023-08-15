@@ -35,6 +35,7 @@ npm test
 - State management and local storage persistance: [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)
 - Data visualization: [D3](https://d3js.org/)
 - Functional programming utilities: [Ramda](https://ramdajs.com/)
+- Testing: [Vitest](https://vitest.dev/) and [Testing Library](https://testing-library.com/)
 
 ## App Features and Interactions
 
@@ -50,7 +51,7 @@ npm test
 - Design inspiration from the android weather app, intended for use on desktop or mobile devices
 - Shows the current weather forecast in the top half of the page and the scrollable forecast on the bottom half with an area curve of the temperature trend. Horizontal scroll is usable on desktop but really intended for touch and drag on mobile.
   ![Desktop](https://lh3.googleusercontent.com/pw/AIL4fc9fT23IuuTgZ8d_lcp5oTknpL7OtXdQR88_waywcjc4jwD54mTMUhO4K-hvMJ94PYP-gpQaRFop13ibFu2i1dIqsyB2x805CCT-0wWtuSHpm3tzByWx0Tqw8nVuYHykcKNCRNfmP2zAUeE5HEip0nntYg=w3448-h1924-s-no?authuser=0)
-  ![Mobile](https://photos.app.goo.gl/SbaCrAJWQ1Asfka2A)
+  ![Mobile](https://lh3.googleusercontent.com/pw/AIL4fc8d1ZVnLZJUUk7sT_pzrEqgmnfRsMYfk0y72ouZgYAd4yBTNTWdOEoLaAkqRU2fGbeoq-aCJ6SxiEOSdyFhpaRvpihpF7_19RjSncr6jEvrMCh6Ra1hMOS_rLwv9-6avFwJSHVfSmUI4FSQjVA916eKgw=w400-h862-s-no?authuser=0)
 
 ### User Interactions
 

@@ -50,7 +50,7 @@ npm test
 - Design inspiration from the android weather app, intended for use on desktop or mobile devices
 - Shows the current weather forecast in the top half of the page and the scrollable forecast on the bottom half with an area curve of the temperature trend. Horizontal scroll is usable on desktop but really intended for touch and drag on mobile.
   ![Desktop](https://lh3.googleusercontent.com/pw/AIL4fc9fT23IuuTgZ8d_lcp5oTknpL7OtXdQR88_waywcjc4jwD54mTMUhO4K-hvMJ94PYP-gpQaRFop13ibFu2i1dIqsyB2x805CCT-0wWtuSHpm3tzByWx0Tqw8nVuYHykcKNCRNfmP2zAUeE5HEip0nntYg=w3448-h1924-s-no?authuser=0)
-  ![Mobile](https://shorturl.at/puG06)
+  ![Mobile](https://photos.app.goo.gl/SbaCrAJWQ1Asfka2A)
 
 ### User Interactions
 
